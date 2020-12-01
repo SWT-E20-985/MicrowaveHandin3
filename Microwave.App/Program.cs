@@ -39,7 +39,7 @@ namespace Microwave.App
 
             startCancelButton.Press();
 
-            // The simple sequence should now run/
+            // The simple sequence should now run
 
             System.Console.WriteLine("When you press enter, the program will stop");
             // Wait for input
