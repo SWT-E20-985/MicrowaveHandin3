@@ -59,7 +59,7 @@ namespace Microwave.Test.Unit
             uut.Expired += (sender, args) => pause.Set();
             uut.Start(2000);
 
-            // wait shorter than expiration, shouldn't come
+            // wait shorter than expiration, shouldn't come/
             Assert.That(!pause.WaitOne(1900));
         }
 
