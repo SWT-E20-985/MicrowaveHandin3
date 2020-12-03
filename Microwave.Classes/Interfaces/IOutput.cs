@@ -8,7 +8,6 @@ namespace Microwave.Classes.Interfaces
 {
     public interface IOutput
     {
-        void OnPowerPressed(string line);
         void OutputLine(string output);
     }
 }

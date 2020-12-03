@@ -12,14 +12,14 @@ namespace Microwave.Test.Integration
     [TestFixture]
     public class Step3
     {
-        
-        private IUserInterface  _userInterface;
+
+        private IUserInterface _userInterface;
         private CookController _uutCC;
 
-        private IPowerTube      _powerTube;
-        private IDisplay        _display;
-        private ITimer          _timer;
-        private IOutput         _output;
+        private IPowerTube _powerTube;
+        private IDisplay _display;
+        private ITimer _timer;
+        private IOutput _output;
 
         ////Buttons
         //private IButton _btnPower;
@@ -47,7 +47,7 @@ namespace Microwave.Test.Integration
             //_btnStartCancel = new Button();
 
             _uutCC = new CookController(_timer, _display, _powerTube, _userInterface);
-           // _uutInterface = new UserInterface(_btnPower, _btnTimer, _btnStartCancel, _door, _display, _light, _uutCC);
+            // _uutInterface = new UserInterface(_btnPower, _btnTimer, _btnStartCancel, _door, _display, _light, _uutCC);
 
         }
 
@@ -67,7 +67,7 @@ namespace Microwave.Test.Integration
         public void Testing_TimeRemaining_On_Ticking(int time, int tickTok, string screen)
         {
             _uutCC.StartCooking(50, time);
-            _timer.TimeRemaining.Returns(time - tickTok);
+            _timer.TimeRemaining.Returns(time - tickTok);        //For hver tick trækkes et sekund fra fra tiden der er tilbage
             _timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
             _output.Received(1).OutputLine(screen);
         }

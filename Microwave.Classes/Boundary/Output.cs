@@ -4,10 +4,10 @@ namespace Microwave.Classes.Boundary
 {
     public class Output : IOutput
     {
-        public void OnPowerPressed(string line)
+        public void OutputLine(string line)
         {
             System.Console.WriteLine(line);
         }
-        
+
     }
 }

@@ -13,17 +13,17 @@ namespace Microwave.Classes.Boundary
 
         public void ShowTime(int min, int sec)
         {
-            myOutput.OnPowerPressed($"Display shows: {min:D2}:{sec:D2}");
+            myOutput.OutputLine($"Display shows: {min:D2}:{sec:D2}");
         }
 
         public void ShowPower(int power)
         {
-            myOutput.OnPowerPressed($"Display shows: {power} W");
+            myOutput.OutputLine($"Display shows: {power} W");
         }
 
         public void Clear()
         {
-            myOutput.OnPowerPressed($"Display cleared");
+            myOutput.OutputLine($"Display cleared");
         }
     }
 }
