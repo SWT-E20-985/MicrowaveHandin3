@@ -87,7 +87,7 @@ namespace Microwave.Test.Integration
             
             System.Threading.Thread.Sleep(1000*seconds);
 
-            Assert.AreEqual(_timer.TimeRemaining, 61 - seconds); //denne test gav en uventet fejl i første omgang, af denne grund ændrer vi i Timer klassen
+            Assert.AreEqual(_timer.TimeRemaining, 60 - seconds); //denne test gav en uventet fejl i første omgang, af denne grund ændrer vi i Timer klassen
         }
 
 
