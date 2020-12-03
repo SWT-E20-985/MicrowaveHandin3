@@ -1,6 +1,4 @@
-﻿
-
-using Microwave.Classes.Boundary;
+﻿using Microwave.Classes.Boundary;
 using Microwave.Classes.Controllers;
 using Microwave.Classes.Interfaces;
 using NSubstitute;
@@ -10,79 +8,49 @@ using System;
 namespace Microwave.Test.Integration
 {
     [TestFixture]
-    public class Step3
-    {
-
-        private IUserInterface _userInterface;
+    public class Step4
+    {        
         private CookController _uutCC;
 
+        private IUserInterface _userInterface;
         private IPowerTube _powerTube;
         private IDisplay _display;
-        private ITimer _timer;
+        private ILight _light;
         private IOutput _output;
+        private ITimer _timer;
+        private IDoor _door;
 
-        ////Buttons
-        //private IButton _btnPower;
-        //private IButton _btnTimer;
-        //private IButton _btnStartCancel;
-
+        private IButton _BtnPower;
+        private IButton _BtnTimer;
+        private IButton _BtnStartCancel;
 
 
         [SetUp]
         public void Setup()
         {
 
+            _powerTube = new PowerTube(_output);
+            _display = new Display(_output);
+
+            //Fake klasserne
             _userInterface = Substitute.For<IUserInterface>();
-            _display = Substitute.For<IDisplay>();
+            _timer = Substitute.For<ITimer>();
             _output = Substitute.For<IOutput>();
 
-            _powerTube = new PowerTube(_output);
-            _timer = new Timer();
-
-            //_door = new Door();
-            //_light = new Light(_output);
-
-            //_btnPower = new Button();
-            //_btnTimer = new Button();
-            //_btnStartCancel = new Button();
-
+            //controller
             _uutCC = new CookController(_timer, _display, _powerTube, _userInterface);
-            // _uutInterface = new UserInterface(_btnPower, _btnTimer, _btnStartCancel, _door, _display, _light, _uutCC);
 
         }
 
 
-        //private void set_state_power()
-        //{
-        //    _btnPower.Press();
-        //}
-
-        //private void state_start_cooking()
-        //{
-        //    set_state_power();              //Power skal være slået til før man kan lave mad
-        //    _btnPower.Press();
-        //}
-
-        [TestCase(60, 1, "Display shows: 00:59")]
-        public void Testing_TimeRemaining_On_Ticking(int time, int tickTok, string screen)
+        [TestCase(50, 7)]
+        [TestCase(350, 50)]
+        [TestCase(700, 100)]
+        public void Testing_power_turnOn(int power, int percent)
         {
-            _uutCC.StartCooking(50, time);
-            _timer.TimeRemaining.Returns(time - tickTok);        //For hver tick trækkes et sekund fra fra tiden der er tilbage
-            _timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
-            _output.Received(1).OutputLine(screen);
-        }
+            //_uutCC.StartCooking(power)
 
-
-        public void Testing_Ticks(int time, int tickTok, string screen)
-        {
-            _uutCC.StartCooking(50, time);
-
-            for (int i = 1; i < tickTok + 1; i++)
-            {
-                _timer.TimeRemaining.Returns(time - i);
-                _timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
-            }
-            _output.Received(1).OutputLine(screen);
         }
     }
 }
+
