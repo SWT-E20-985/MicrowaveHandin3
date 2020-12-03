@@ -108,7 +108,7 @@ namespace Microwave.Test.Integration
         [TestCase(1)]
         [TestCase(3)]
         [TestCase(5)]
-        public void Test_Timer_On(int minutes)
+        public void Test_Timer_On(int time)
         {
             _door.Close();
 
@@ -117,7 +117,7 @@ namespace Microwave.Test.Integration
             _timeButton.Press();
             _startCancelButton.Press();
 
-            _output.Received(1).OutputLine($"Display shows: {minutes}:0");
+            _output.Received(1).OutputLine($"Display show: {time}:0");
 
         }
 
