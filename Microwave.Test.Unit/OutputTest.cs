@@ -26,7 +26,7 @@ namespace Microwave.Test.Unit
         [Test]
         public void OutputLineCorrect()
         {
-            uut.OnPowerPressed("Test");
+            uut.OutputLine("Test");
 
             Assert.That(str.ToString().Contains("Test"));
 
