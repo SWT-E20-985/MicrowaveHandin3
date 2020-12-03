@@ -8,6 +8,6 @@ namespace Microwave.Classes.Interfaces
 {
     public interface IOutput
     {
-        void OutputLine(string line);
+        void OutputLine(string output);
     }
 }

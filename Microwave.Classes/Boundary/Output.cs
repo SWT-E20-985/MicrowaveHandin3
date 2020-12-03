@@ -8,6 +8,6 @@ namespace Microwave.Classes.Boundary
         {
             System.Console.WriteLine(line);
         }
-        
+
     }
 }

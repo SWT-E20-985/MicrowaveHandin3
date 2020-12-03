@@ -44,7 +44,7 @@ namespace Microwave.App
             System.Console.WriteLine("When you press enter, the program will stop");
             // Wait for input
 
-            System.Console.ReadLine(); //Fejl her, da en tom consol.ReadLine printer alle mulige mærkelige tal på skærmen
+            System.Console.ReadLine(); 
         }
     }
 }
