@@ -10,7 +10,7 @@ namespace Microwave.Test.Integration
 {
 
     [TestFixture]
-    public class Step3
+    public class Step4
     {
         //Display for cookController
         private UserInterface _userInterface;

@@ -8,7 +8,7 @@ using System;
 namespace Microwave.Test.Integration
 {
     [TestFixture]
-    public class Step4
+    public class Step3
     {        
         private CookController _uutCC;
 
