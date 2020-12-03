@@ -16,7 +16,7 @@ namespace Microwave.Classes.Boundary
         {
             if (!isOn)
             {
-                myOutput.OutputLine("Light is turned on");
+                myOutput.OnPowerPressed("Light is turned on");
                 isOn = true;
             }
         }
@@ -25,7 +25,7 @@ namespace Microwave.Classes.Boundary
         {
             if (isOn)
             {
-                myOutput.OutputLine("Light is turned off");
+                myOutput.OnPowerPressed("Light is turned off");
                 isOn = false;
             }
         }

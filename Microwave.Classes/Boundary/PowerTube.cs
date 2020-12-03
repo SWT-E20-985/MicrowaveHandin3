@@ -26,7 +26,7 @@ namespace Microwave.Classes.Boundary
                 throw new ApplicationException("PowerTube.TurnOn: is already on");
             }
 
-            myOutput.OutputLine($"PowerTube works with {power}");
+            myOutput.OnPowerPressed($"PowerTube works with {power}");
             IsOn = true;
         }
 
@@ -34,7 +34,7 @@ namespace Microwave.Classes.Boundary
         {
             if (IsOn)
             {
-                myOutput.OutputLine($"PowerTube turned off");
+                myOutput.OnPowerPressed($"PowerTube turned off");
             }
 
             IsOn = false;

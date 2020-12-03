@@ -25,7 +25,7 @@ namespace Microwave.Test.Unit
         public void TurnOn_WasOffCorrectPower_CorrectOutput(int power)
         {
             uut.TurnOn(power);
-            output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"{power}")));
+            output.Received().OnPowerPressed(Arg.Is<string>(str => str.Contains($"{power}")));
         }
 
         [TestCase(-5)]
@@ -43,14 +43,14 @@ namespace Microwave.Test.Unit
         {
             uut.TurnOn(50);
             uut.TurnOff();
-            output.Received().OutputLine(Arg.Is<string>(str => str.Contains("off")));
+            output.Received().OnPowerPressed(Arg.Is<string>(str => str.Contains("off")));
         }
 
         [Test]
         public void TurnOff_WasOff_NoOutput()
         {
             uut.TurnOff();
-            output.DidNotReceive().OutputLine(Arg.Any<string>());
+            output.DidNotReceive().OnPowerPressed(Arg.Any<string>());
         }
 
         [Test]
