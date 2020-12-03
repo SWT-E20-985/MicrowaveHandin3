@@ -8,7 +8,7 @@ using System;
 namespace Microwave.Test.Integration
 {
     [TestFixture]
-    public class Step4
+    public class Step3
     {        
         private CookController _uutCC;
 
@@ -31,26 +31,25 @@ namespace Microwave.Test.Integration
 
             _powerTube = new PowerTube(_output);
             _display = new Display(_output);
+            _light = new Light(_output);
+            _timer = new Timer();
+            _BtnPower = new Button();
+            _BtnStartCancel = new Button();
+            _BtnTimer = new Button();
 
             //Fake klasserne
-            _userInterface = Substitute.For<IUserInterface>();
-            _timer = Substitute.For<ITimer>();
             _output = Substitute.For<IOutput>();
 
             //controller
             _uutCC = new CookController(_timer, _display, _powerTube, _userInterface);
 
+            _userInterface = new UserInterface(_BtnPower, _BtnTimer, _BtnStartCancel, _door, _display, _light, _uutCC);
+
+
         }
 
+        
 
-        [TestCase(50, 7)]
-        [TestCase(350, 50)]
-        [TestCase(700, 100)]
-        public void Testing_power_turnOn(int power, int percent)
-        {
-            //_uutCC.StartCooking(power)
-
-        }
     }
 }
 
